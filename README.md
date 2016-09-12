@@ -19,21 +19,32 @@ require 'class.cloudflare_api.php';
 ### Usage ###
 See examples.php for full examples.
 
+Initialize:
+
 ```
 #!php
+
 $email = 'example@example.com'; // Email address registered with CloudFlare
 $api_key = 'abf7f1bcd58fbe65749605956e928ee88f39'; // Global API key in CloudFlare > Your Account > My Settings > Account
-// initialize
-$cloudflare_api = new CloudFlare_API($email, $api_key);
 
-// make a simple GET call
+$cloudflare_api = new CloudFlare_API($email, $api_key);
+```
+Make a simple GET call to API:
+
+```
+#!php
+
 $function = 'zones'; // API function without the first foward flash (e.g. /zones)
 $params = array(
 	'name' => 'example.com',
 	);
 $zone_id = $cloudflare_api->send_GET_request($function, $params);
+```
 
-// make a RESTful call
+Make a RESTful call to API:
+
+```
+#!php
 $function = 'zones/:zones_id/dns_records/:dns_record_id';
 $params = array(
 		'type' => 'A',
@@ -43,7 +54,6 @@ $params = array(
 		);
 $cloudflare_api->send_POST_request('PUT', $function, $params);
 ```
-
 
 ### Who do I talk to? ###
 
