@@ -68,7 +68,7 @@ class CloudFlare_API
 	*/
 	public function send_POST_request( $method, $function, $params = array() )
 	{
-		$json_data = json_encode($params);
+		if (!empty($params)) $json_data = json_encode($params);
 
 		$headers = $this->request_headers;
 		$headers[] = 'Content-Length: ' . strlen($json_data);
@@ -80,7 +80,7 @@ class CloudFlare_API
 		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
 		curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, $method );
-		curl_setopt( $curl, CURLOPT_POSTFIELDS, $json_data );
+		if (!empty($params)) curl_setopt( $curl, CURLOPT_POSTFIELDS, $json_data );
 		curl_setopt( $curl, CURLOPT_URL, $url );
 
 		$result = json_decode(curl_exec($curl) , true);
