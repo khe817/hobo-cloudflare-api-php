@@ -12,7 +12,7 @@ Class for executing calls to CloudFlare API
 
 ```
 #!php
-
+<?php
 require 'class.cloudflare_api.php';
 ```
 
@@ -23,7 +23,7 @@ Initialize:
 
 ```
 #!php
-
+<?php
 $email = 'example@example.com'; // Email address registered with CloudFlare
 $api_key = 'abf7f1bcd58fbe65749605956e928ee88f39'; // Global API key in CloudFlare > Your Account > My Settings > Account
 
@@ -33,7 +33,7 @@ Make a simple GET call to API:
 
 ```
 #!php
-
+<?php
 $function = 'zones'; // API function without the first foward flash (e.g. /zones)
 $params = array(
 	'name' => 'example.com',
@@ -45,6 +45,7 @@ Make a RESTful call to API:
 
 ```
 #!php
+<?php
 $function = 'zones/:zones_id/dns_records/:dns_record_id';
 $params = array(
 		'type' => 'A',
