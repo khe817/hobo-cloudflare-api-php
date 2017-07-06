@@ -10,9 +10,7 @@ Class for executing calls to CloudFlare API
 ### How do I get set up? ###
 
 
-```
-#!php
-<?php
+```php
 require 'class.cloudflare_api.php';
 ```
 
@@ -21,9 +19,7 @@ See examples.php for full examples.
 
 Initialize:
 
-```
-#!php
-<?php
+```php
 $email = 'example@example.com'; // Email address registered with CloudFlare
 $api_key = 'abf7f1bcd58fbe65749605956e928ee88f39'; // Global API key in CloudFlare > Your Account > My Settings > Account
 
@@ -31,9 +27,7 @@ $cloudflare_api = new CloudFlare_API($email, $api_key);
 ```
 Make a simple GET call to API:
 
-```
-#!php
-<?php
+```php
 $function = 'zones'; // API function without the first foward flash (e.g. /zones)
 $params = array(
 	'name' => 'example.com',
@@ -43,9 +37,7 @@ $zone_id = $cloudflare_api->send_GET_request($function, $params);
 
 Make a RESTful call to API:
 
-```
-#!php
-<?php
+```php
 $function = 'zones/:zones_id/dns_records/:dns_record_id';
 $params = array(
 		'type' => 'A',
